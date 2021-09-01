@@ -1,8 +1,0 @@
-.idea/*
-.idea
-node_modules
-.husky
-dist
-coverage
-private.key
-private.key.pub
