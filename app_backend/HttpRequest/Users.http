@@ -1,0 +1,11 @@
+GET http://localhost:8001/user/612cd3ea5ec356ca44be517f
+Accept: application/json
+Application-Language:pl
+
+
+###
+GET http://localhost:8001/users?perPage=14&page=1
+Accept: application/json
+Application-Language:en
+
+
