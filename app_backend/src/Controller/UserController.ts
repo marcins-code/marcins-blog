@@ -51,6 +51,18 @@ class UserController {
       // console.log(req.params);
       // @ts-ignore
       // console.log(req.headers);
+
+
+
+
+
+
+
+
+
+
+
+
       // @ts-ignore
       const repository = new UserRepository('pl');
       const user = await repository.getDocumentById(req.params.id);
