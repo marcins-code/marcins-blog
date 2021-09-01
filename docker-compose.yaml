@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  mongo:
+    container_name: ${PROJECT_NAME}_mongodb
+    build:
+      context: .
+      dockerfile: Docker/database/Dockerfile
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+    command: mongod --port 27018
+    ports:
+      - "27018:27018"
+    volumes:
+      - ./data:/data/db
+    restart: unless-stopped
+    networks:
+      - network
+
+  backend:
+    container_name: ${PROJECT_NAME}_backend
+    build:
+      context: .
+      dockerfile: Docker/backend/Dockerfile
+    volumes:
+      - ./app_backend/dist:/usr/src/app/dist
+      - /usr/src/app/node_modules/
+    ports:
+      - ${BACKEND_PORT}:${BACKEND_EXPOSE_PORT}
+    networks:
+      - network
+    depends_on:
+      - mongo
+#    command: npm start
+
+networks:
+  network:
+    driver: bridge
+
+
+
+
