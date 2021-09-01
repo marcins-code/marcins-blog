@@ -31,7 +31,7 @@ class Encryption {
   public verifyJwtToken (token: string): customJwtPayload {
     try {
       return <customJwtPayload>jwt.verify(token, privateKey);
-    } catch (err) {
+    } catch (err: any) {
       throw new UnauthorizedException(err.message);
     }
   }

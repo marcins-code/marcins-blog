@@ -55,7 +55,7 @@ class Authentication {
 
   private static async _getUserByEmail (
     email: string
-  ): Promise<Document | undefined> {
+  ): Promise<Document | null> {
     return await usersCollection.findOne(
       { email: email },
       {
@@ -77,7 +77,7 @@ class Authentication {
   ): Promise<loginTypes> {
     this._validator.validateEmail(email);
 
-    const user: Document | undefined = await Authentication._getUserByEmail(
+    const user: Document | null = await Authentication._getUserByEmail(
       email
     );
     if (!user) {

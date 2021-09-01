@@ -22,7 +22,7 @@ class Validator {
   async validateEntity (obj: Object): Promise<any> {
     try {
       return await validateOrReject(obj);
-    } catch (errors) {
+    } catch (errors: any) {
       if (errors) {
         const [firstMessage]: string[] = Object.values(errors[0].constraints);
         throw new InvalidInputException(firstMessage);

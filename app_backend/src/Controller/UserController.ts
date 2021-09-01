@@ -10,7 +10,7 @@ class UserController {
       const repository = new Authentication();
       const signUp = await repository.signUp(req.body);
       res.status(201).json({ ...signUp });
-    } catch (err) {
+    } catch (err: any) {
       return next(res.status(err.code).json(err.message));
     }
   }
@@ -32,7 +32,7 @@ class UserController {
       const users = await repository.getPaginatedDocuments(page, perPage);
 
       res.status(200).json({ ...users });
-    } catch (err) {
+    } catch (err: any) {
       return next(res.status(err.code).json(err.message));
     }
   }
@@ -55,7 +55,7 @@ class UserController {
       const repository = new UserRepository('pl');
       const user = await repository.getDocumentById(req.params.id);
       res.status(200).json({ ...user });
-    } catch (err) {
+    } catch (err: any) {
       return next(res.status(err.code).json(err.message));
     }
   }
